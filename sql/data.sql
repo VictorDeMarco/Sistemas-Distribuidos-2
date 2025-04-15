@@ -10,4 +10,5 @@ INSERT INTO books (title, author) VALUES
                                       ('1984', 'George Orwell'),
                                       ('The Great Gatsby', 'F. Scott Fitzgerald'),
                                       ('Pride and Prejudice', 'Jane Austen'),
+                                      ('Max mala estrella', 'Valle-Inclan'),
                                       ('The Catcher in the Rye', 'J.D. Salinger');

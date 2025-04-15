@@ -13,16 +13,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "libros")
+@Table(name = "books")
 public class books implements Serializable {
     @Id
-    @Column(name = "id_libro")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
     @Column(name = "title")
     public String title;
     @Column(name = "author")
     public String author;
-    @Column(name = "editorial")
-    public String editorial;
+
 }

@@ -16,6 +16,10 @@ public class booksservice {
     }
 
     public List<books> listabooks(){
-        return  booksrepo.findAll();
+
+            List<books> booksList = booksrepo.findAll();
+            booksList.forEach(libro -> System.out.println(libro.getTitle() + " - " + libro.getAuthor()));  // Imprime los libros
+            return booksList;
+
     }
 }
