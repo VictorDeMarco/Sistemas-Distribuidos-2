@@ -1,14 +1,11 @@
-CREATE TABLE IF NOT EXISTS books (
-                                     id INT AUTO_INCREMENT PRIMARY KEY,
-                                     title VARCHAR(255) NOT NULL,
-    author VARCHAR(255) NOT NULL
-    );
+CREATE TABLE IF NOT EXISTS usuarios (
+                                        `id` INT NOT NULL AUTO_INCREMENT,
+                                        PRIMARY KEY (`id`),
+                                        username VARCHAR(255) NOT NULL UNIQUE,
+                                        password VARCHAR(255) NOT NULL
+);
 
--- Insert sample data into the books table
-INSERT INTO books (title, author) VALUES
-                                      ('To Kill a Mockingbird', 'Harper Lee'),
-                                      ('1984', 'George Orwell'),
-                                      ('The Great Gatsby', 'F. Scott Fitzgerald'),
-                                      ('Pride and Prejudice', 'Jane Austen'),
-                                      ('Max mala estrella', 'Valle-Inclan'),
-                                      ('The Catcher in the Rye', 'J.D. Salinger');
+-- Insertamos algunos usuarios de prueba
+INSERT INTO usuarios (username, password) VALUES
+                                              ('pepe', '1234'),
+                                              ('admin', 'admin');

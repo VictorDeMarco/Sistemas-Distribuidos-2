@@ -1,4 +1,4 @@
-package com.example.books.books.model;
+package com.example.usuarios.usuarios.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,15 +13,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "books")
-public class books implements Serializable {
+@Table(name = "usuarios")
+public class Usuario implements Serializable {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
-    @Column(name = "title")
-    public String title;
-    @Column(name = "author")
-    public String author;
+    @Column(name = "username")
+    public String username;
+    @Column(name = "password")
+    public String password;
 
 }

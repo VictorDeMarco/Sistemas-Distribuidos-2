@@ -1,10 +1,10 @@
-package com.example.books.books;
+package com.example.usuarios.usuarios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BooksApplicationTests {
+class LoginApplicationTests {
 
 	@Test
 	void contextLoads() {
