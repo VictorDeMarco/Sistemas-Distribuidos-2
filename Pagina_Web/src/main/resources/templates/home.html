@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #f4f7f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-group {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 th:text="'Hola, ' + ${nombre} + '!'">Bienvenido</h1>
+    <p>Has iniciado sesión correctamente.</p>
+    <p>Ahora puedes elegir qué función deseas usar:</p>
+
+    <div class="button-group">
+        <form th:action="@{/api-test}" method="get">
+            <button type="submit">🔎 Probar API Flask</button>
+        </form>
+
+        <form th:action="@{/register}" method="get">
+            <button type="submit">👤 Registrar nuevos usuarios</button>
+        </form>
+
+        <button onclick="window.location.href='/'">🏠 Volver al inicio</button>
+    </div>
+</div>
+
+</body>
+</html>

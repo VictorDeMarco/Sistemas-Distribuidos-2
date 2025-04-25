@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test API Flask</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #f4f7f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            color: #2c3e50;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+            border: 2px solid #ccc;
+            text-align: left;
+        }
+
+        .resultado h3 {
+            color: #d93025;
+        }
+
+        .detalle {
+            color: #555;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .enlace-api {
+            margin-top: 20px;
+            color: #091c83;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Probar API en Python (Flask)</h2>
+
+    <form th:action="@{/api-test}" method="post">
+        <select name="tipo" required>
+            <option value="/file-error">📁 Error de archivo</option>
+            <option value="/db-error">💾 Error de base de datos</option>
+            <option value="/external-error">🌐 Error API externa</option>
+            <option value="/ok">✅ Sin errores</option>
+            <option value="/productos">📦 Consulta a productos</option>
+        </select>
+        <button type="submit">Probar</button>
+    </form>
+
+    <div th:if="${mensaje}" class="resultado">
+        <h3 th:text="${mensaje}">Resultado:</h3>
+        <p th:if="${excepcion != 'general'}" class="detalle"
+           th:text="'Excepción causada: ' + ${excepcion}"></p>
+    </div>
+
+    <div class="enlace-api" th:if="${excepcion != 'general'}">
+        <p>Puedes abrir el endpoint de Flask directamente:</p>
+        <button onclick="abrirApi()">🔗 Ver en Flask</button>
+    </div>
+
+    <form th:action="@{/home}" method="get">
+        <button type="submit">🏠 Volver al Home</button>
+    </form>
+</div>
+
+<script th:inline="javascript">
+    let endpoint = [[${endpointLlamado}]];
+
+    function abrirApi() {
+        window.open(endpoint, '_blank');
+    }
+</script>
+
+</body>
+</html>
+

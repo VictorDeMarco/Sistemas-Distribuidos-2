@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-color: #f4f7f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .mensaje {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .mensaje-error {
+            color: #d93025;
+            background-color: #fce8e6;
+            border: 1px solid #f5c6cb;
+        }
+
+        .mensaje-ok {
+            color: #2e7d32;
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Registro de Usuario</h2>
+
+    <form th:action="@{/register}" th:object="${usuario}" method="post">
+        <label for="username">Usuario:</label>
+        <input type="text" th:field="*{username}" id="username" required />
+
+        <label for="password">Contraseña:</label>
+        <input type="password" th:field="*{password}" id="password" required />
+
+        <button type="submit">Registrar</button>
+    </form>
+
+    <form th:action="@{/home}" method="get">
+        <button type="submit">Volver al Home</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" class="mensaje mensaje-error"></p>
+    <p th:if="${mensaje}" th:text="${mensaje}" class="mensaje mensaje-ok"></p>
+</div>
+
+</body>
+</html>
+
+
